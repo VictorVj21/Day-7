@@ -1,0 +1,166 @@
+1.Solving problems using array functions on the rest countries' data (https://restcountries.com/v3.1/all).
+
+
+A.Get all the countries from the Asia continent /region using the Filter function
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reqListener() {
+           data=JSON.parse(this.responseText);
+           let asia=data.filter((e)=>{
+            if(e.region=='Asia')
+                return true;
+            else 
+                return false;
+           })
+           console.log(asia)
+        }
+        const req = new XMLHttpRequest();
+        req.addEventListener("load", reqListener);
+        req.open("GET", "https://restcountries.com/v3.1/all");
+        req.send();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+B.Get all the countries with a population of less than 2 lakhs using Filter function
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reqListener() {
+           data=JSON.parse(this.responseText);
+           let populate=data.filter((e)=>{
+           if(e.population<200000)
+               return true;
+           else 
+                return false;
+           })
+           console.log(populate);
+        }
+        const req = new XMLHttpRequest();
+        req.addEventListener("load", reqListener);
+        req.open("GET", "https://restcountries.com/v3.1/all");
+        req.send();
+    </script>
+</body>
+</html>
+
+
+
+
+C.Print the following details name, capital, flag using forEach function
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reqListener() {
+           data=JSON.parse(this.responseText);
+           let details =data.map((x) =>  [x.name, x.capital, x.flag]) 
+           data.forEach(details)
+        }
+        const req = new XMLHttpRequest();
+        req.addEventListener("load", reqListener);
+        req.open("GET", "https://restcountries.com/v3.1/all");
+        req.send();
+    </script>
+</body>
+</html>
+
+
+
+
+D.Print the total population of countries using reduce function
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reqListener() {
+           data=JSON.parse(this.responseText);
+           let totalPopulation =data.reduce((total, country) => total + country.population,0)
+         console.log(totalPopulation)
+        }        
+        const req = new XMLHttpRequest();
+        req.addEventListener("load", reqListener);
+        req.open("GET", "https://restcountries.com/v3.1/all");
+        req.send();
+    </script>
+</body>
+</html>
+
+
+
+E.Print the country which uses US Dollars as currency.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reqListener() {
+           data=JSON.parse(this.responseText);
+           let dollar=data.filter((e)=>{
+            if (e.currencies="USD")
+              return true
+           else 
+              return false
+        })
+        console.log(dollar)
+    }
+        const req = new XMLHttpRequest();
+        req.addEventListener("load", reqListener);
+        req.open("GET", "https://restcountries.com/v3.1/all");
+        req.send();
+    </script>
+</body>
+</html>
+
+
+
+
+
